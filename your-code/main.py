@@ -80,7 +80,19 @@ In the end, f should have only the following values: 0, 25, 50, 75, and 100.
 Note: you don't have to use Numpy in this question.
 """
 
-
+for i in range(d.shape[0]):
+        for j in range(d.shape[1]):
+                for k in range(d.shape[2]):
+                        if d[i,j,k] > d_min and d[i,j,k] < d_mean:
+                                f[i,j,k] = 25
+                        if d[i,j,k] > d_mean and d[i,j,k] < d_max:
+                                f[i,j,k] =75
+                        if d[i,j,k] == d_mean:
+                                f[i,j,k] =50
+                        if d[i,j,k] == d_min:
+                                f[i,j,k] = 0
+                        if d[i,j,k] == d_max:
+                                f[i,j,k] = 100
 
 
 """
@@ -103,8 +115,8 @@ array([[[ 75.,  75.,  75.,  25.,  75.],
         [ 75.,  75.,  75.,  75.,  75.],
         [ 25.,  75.,   0.,  75.,  75.]]])
 """
-
-
+# print(d,'\n\n')
+# print(f)
 """
 #18. Bonus question: instead of using numbers (i.e. 0, 25, 50, 75, and 100), how to use string values 
 ("A", "B", "C", "D", and "E") to label the array elements? You are expecting the result to be:
@@ -117,3 +129,24 @@ array([[[ 'D',  'D',  'D',  'B',  'D'],
         [ 'B',  'D',   'A',  'D', 'D']]])
 Again, you don't need Numpy in this question.
 """
+
+f =  [[],[],[]],[[],[],[]]
+
+
+for i in range(d.shape[0]):
+        for j in range(d.shape[1]):
+                for k in range(d.shape[2]):
+                        if d[i,j,k] > d_min and d[i,j,k] < d_mean:
+                                f[i][j].append('A')
+                        if d[i,j,k] > d_mean and d[i,j,k] < d_max:
+                                f[i][j].append('B')
+                        if d[i,j,k] == d_mean:
+                                f[i][j].append('C')
+                        if d[i,j,k] == d_min:
+                                f[i][j].append('D')
+                        if d[i,j,k] == d_max:
+                                f[i][j].append('E')
+
+f = np.array(f)
+print(d,'\n\n')
+print(f)
